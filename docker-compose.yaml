@@ -14,4 +14,11 @@ services:
     working_dir: /node/app
     volumes:
       - ./:/node/app
+      - ./package.json:/node/package.json
+      - ./package-lock.json:/node/package-lock.json
+      - notused:/node/app/node_modules
     command: ["npm", "run", dev]
+
+
+volumes:
+  notused:
