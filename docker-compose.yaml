@@ -17,8 +17,27 @@ services:
       - ./package.json:/node/package.json
       - ./package-lock.json:/node/package-lock.json
       - notused:/node/app/node_modules
+    depends_on:
+      - mongo_db
+    links:
+      - mongo_db
     command: ["npm", "run", dev]
 
+  mongo_db:
+    image: mongo
+    container_name: tu_turno_db
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admTuTurno
+      - MONGO_INITDB_ROOT_PASSWORD=p78ichDi
+      - MONGO_INITDB_DATABASE=tu_turno
+    volumes:
+      - db_mongo:/data/db
 
 volumes:
   notused:
+  db_mongo:

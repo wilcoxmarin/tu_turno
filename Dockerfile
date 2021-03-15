@@ -5,7 +5,7 @@ ENV WORKDIR /node/app
 # creamos la carpeta donde va estar los node_modules
 WORKDIR ${WORKDIR_MODULE}
 # copiamos el pacrkage en al carpeta
-COPY package*.json ./
+COPY package.json ./
 # install dependencias
 RUN npm install -g nodemon typescript ts-node
 RUN npm install
