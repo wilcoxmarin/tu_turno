@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  app:
+    build: .
+    container_name: tu_turno
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    ports:
+      - "4000:4000"
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+    working_dir: /node/app
+    volumes:
+      - ./:/node/app
+    command: ["npm", "run", dev]
