@@ -1,16 +1,10 @@
+// importamos el modulo de las variables de entorno 
+const enviroment = require('./config/enviroment')
 // importamos express
-import express from 'express'
-// importamos path
-var path = require('path');
-// creamos instancia de express
-const app = express()
-// asignamos el puerto a trabajar
-const port = 4000
-// guardamos las rutas de la vistas
-app.set('views', path.join(__dirname, 'views'));
-// establecer el motor de vista en ejs
-app.set('view engine', 'ejs');
-app.get('/', (req: any, res: any) => {
-    res.render('page/home')
-})
-app.listen(port, () => console.log(`Running on port ${port}`))
+import server from "./config/server";
+//
+import routers from "./router/router"
+console.log(routers)
+server.use(routers)
+// iniciamos el servidor
+server.listen(enviroment.PORT, () => console.log(`Running on port ${enviroment.PORT}`))

@@ -2,6 +2,8 @@ FROM node:lts-alpine3.9
 # primero creo envairoment para donde se va crear la carpeta
 ENV WORKDIR_MODULE /node
 ENV WORKDIR /node/app
+# creamos variable de entorno
+ENV NODE_ENV development
 # creamos la carpeta donde va estar los node_modules
 WORKDIR ${WORKDIR}
 # copiamos el pacrkage en al carpeta
